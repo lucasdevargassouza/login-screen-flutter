@@ -24,6 +24,8 @@ flutter:
 
 
   assets:
+  - lib/assets/imgs/background_home.jpg
   - lib/assets/imgs/login_background.jpg
   - lib/assets/imgs/login_icon.png
+  - lib/assets/imgs/perfil.png
 
