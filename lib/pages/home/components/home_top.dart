@@ -1,3 +1,4 @@
+import 'package:animation_login_screen/pages/login/login_page.dart';
 import 'package:flutter/material.dart';
 
 class HomeTop extends StatelessWidget {
@@ -29,31 +30,34 @@ class HomeTop extends StatelessWidget {
                 fontWeight: FontWeight.w300,
               ),
             ),
-            Container(
-              alignment: Alignment.topRight,
-              width: containerGrow.value * 120,
-              height: containerGrow.value * 120,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: AssetImage("lib/assets/imgs/perfil.png"),
-                  fit: BoxFit.cover,
-                ),
-              ),
+            InkWell(
+              onTap: (){ Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage())); },
               child: Container(
-                width: containerGrow.value * 35,
-                height: containerGrow.value * 35,
+                alignment: Alignment.topRight,
+                width: containerGrow.value * 120,
+                height: containerGrow.value * 120,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.blue,
+                  image: DecorationImage(
+                    image: AssetImage("lib/assets/imgs/perfil.png"),
+                    fit: BoxFit.cover,
+                  ),
                 ),
-                alignment: Alignment.center,
-                child: Text(
-                  "2",
-                  style: TextStyle(
-                    fontSize: containerGrow.value * 15,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.white,
+                child: Container(
+                  width: containerGrow.value * 35,
+                  height: containerGrow.value * 35,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.blue,
+                  ),
+                  alignment: Alignment.center,
+                  child: Text(
+                    "2",
+                    style: TextStyle(
+                      fontSize: containerGrow.value * 15,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),

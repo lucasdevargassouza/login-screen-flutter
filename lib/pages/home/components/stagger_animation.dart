@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'animated_list_view.dart';
+import 'fade_container.dart';
 import 'home_top.dart';
 
 class StaggerAnimation extends StatelessWidget {
@@ -14,17 +15,30 @@ class StaggerAnimation extends StatelessWidget {
         ).animate(CurvedAnimation(
           parent: controller,
           curve: Interval(0.325, 0.8, curve: Curves.ease),
+        )),
+        fadeAnimation = ColorTween(
+          begin: Colors.red,
+          end: Colors.transparent,
+        ).animate(CurvedAnimation(
+          parent: controller,
+          curve: Curves.ease,
         ));
 
   final Animation<double> containerGrow;
   final Animation<EdgeInsets> listSlidePosition;
+  final Animation<Color> fadeAnimation;
 
   Widget _buildAnimation(BuildContext context, Widget child) {
-    return ListView(
-      padding: EdgeInsets.zero,
+    return Stack(
       children: <Widget>[
-        HomeTop(containerGrow: containerGrow),
-        AnimatedListView(listSlidePosition: listSlidePosition),
+        ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            HomeTop(containerGrow: containerGrow),
+            AnimatedListView(listSlidePosition: listSlidePosition),
+          ],
+        ),
+        IgnorePointer(child: FadeContainer(fadeAnimation: fadeAnimation)),
       ],
     );
   }

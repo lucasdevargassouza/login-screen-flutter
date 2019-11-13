@@ -1,3 +1,4 @@
+import 'package:animation_login_screen/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
 
 import 'components/form_container.dart';
@@ -8,7 +9,8 @@ class LoginPage extends StatefulWidget {
   _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMixin {
+class _LoginPageState extends State<LoginPage>
+    with SingleTickerProviderStateMixin {
   AnimationController _animationController;
 
   @override
@@ -17,6 +19,13 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
 
     _animationController =
         AnimationController(vsync: this, duration: Duration(seconds: 2));
+
+    _animationController.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => HomePage()));
+      }
+    });
   }
 
   @override
